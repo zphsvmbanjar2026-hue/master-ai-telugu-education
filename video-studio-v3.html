@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MASTER AI VIDEO STUDIO</title>
+<style>
+:root{font-family:system-ui,'Noto Sans Telugu',sans-serif;color:#f3f5ff;background:#0b1020}*{box-sizing:border-box}body{margin:0}header{background:linear-gradient(120deg,#15275b,#442a7c);padding:24px 16px;text-align:center}h1{font-size:24px;margin:0 0 6px}header p{margin:0;color:#d4ddff;font-size:13px}main{max-width:760px;margin:auto;padding:16px}.panel{background:#171f36;border:1px solid #34415e;border-radius:16px;padding:16px;margin:0 0 15px}h2{font-size:18px;margin:0 0 12px}label{display:block;margin:12px 0 6px;font-weight:600}input[type=file],input[type=text],input[type=number],select{width:100%;padding:12px;background:#0d1427;border:1px solid #53617e;border-radius:9px;color:white;font-size:16px}input[type=file]{font-size:13px}button{background:#7066ff;color:white;border:0;border-radius:10px;padding:12px 16px;font-weight:700;cursor:pointer;margin:6px 4px 6px 0}button:disabled{opacity:.4}progress{width:100%;height:16px;accent-color:#7066ff}#exportResult a{display:inline-block;padding:12px;background:#16865c;color:white;border-radius:10px;text-decoration:none;font-weight:700}video{width:100%;display:block;border-radius:10px;background:#050914}#stage{position:relative}#overlay{position:absolute;bottom:12%;left:4%;right:4%;text-align:center;font-weight:800;font-size:clamp(16px,5vw,30px);color:white;text-shadow:0 2px 8px #000;pointer-events:none;overflow-wrap:anywhere}.muted{color:#aebbd5;font-size:13px;line-height:1.6}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}#status{color:#9de5c4}footer{text-align:center;color:#8e9ab4;padding:18px;font-size:12px}
+</style>
+</head>
+<body>
+<header><h1>🎬 MASTER AI VIDEO STUDIO</h1><p>MASTER AI TELUGU EDUCATION | VANDANAM MASTER</p></header>
+<main>
+<section class="panel"><h2>1. వీడియో అప్‌లోడ్</h2><input id="file" type="file" accept="video/*"><p class="muted">మీ ఫోన్‌లో ఉన్న వీడియోను ఎంచుకోండి. వీడియో మీ బ్రౌజర్‌లోనే తెరుచుకుంటుంది; సర్వర్‌కు అప్‌లోడ్ కాదు.</p></section>
+<section class="panel"><h2>2. వీడియో ప్రివ్యూ</h2><div id="stage"><video id="video" controls playsinline preload="metadata"></video><div id="overlay">MASTER AI TELUGU EDUCATION</div></div><p id="duration" class="muted">వీడియో ఇంకా ఎంచుకోలేదు.</p><button id="play" disabled>▶ Play / Pause</button><button id="snapshot" disabled>📷 Save Frame</button></section>
+<section class="panel"><h2>3. బ్రాండ్ టెక్స్ట్</h2><label for="brand">వీడియోపై కనిపించే టెక్స్ట్</label><input id="brand" type="text" maxlength="100" value="MASTER AI TELUGU EDUCATION"><label for="position">టెక్స్ట్ స్థానం</label><select id="position"><option value="12%">కింద</option><option value="43%">మధ్య</option><option value="78%">పైన</option></select></section>
+<section class="panel"><h2>4. ట్రిమ్ పాయింట్లు</h2><div class="row"><div><label for="start">Start (seconds)</label><input id="start" type="number" min="0" step="0.1" value="0"></div><div><label for="end">End (seconds)</label><input id="end" type="number" min="0" step="0.1" value="0"></div></div><button id="preview" disabled>▶ Trim Preview</button><p class="muted">ఇది ఎంచుకున్న భాగాన్ని ప్లే చేస్తుంది. వీడియో ఫైల్‌ను ఇంకా కట్ చేయదు.</p></section>
+<section class="panel"><h2>5. Video Effects</h2><label for="effect">ఎఫెక్ట్ ఎంచుకోండి</label><select id="effect"><option value="normal">Normal</option><option value="bright">Bright & Vibrant</option><option value="cinema">Cinematic</option><option value="bw">Black & White</option><option value="warm">Warm</option></select><p class="muted">ఎఫెక్ట్ ఎక్స్‌పోర్ట్ చేసిన MP4లో వర్తిస్తుంది. ప్రివ్యూ సుమారుగా మాత్రమే కనిపిస్తుంది.</p></section>
+<section class="panel"><h2>6. తెలుగు Text Overlay</h2><label for="captionText">వీడియోపై టెక్స్ట్ (తెలుగు / English)</label><input id="captionText" type="text" maxlength="120" placeholder="ఉదా: మా MASTER AI TELUGU EDUCATION"><label for="captionPos">టెక్స్ట్ స్థానం</label><select id="captionPos"><option value="bottom">కింద</option><option value="center">మధ్య</option><option value="top">పైన</option></select><label for="captionColor">టెక్స్ట్ రంగు</label><select id="captionColor"><option value="#ffffff">తెలుపు</option><option value="#ffe05c">పసుపు</option><option value="#55e6ff">నీలం</option></select><p class="muted">ఫోన్‌లో అందుబాటులో ఉన్న తెలుగు ఫాంట్‌తో టెక్స్ట్ చిత్రంగా తయారై వీడియోలో చేరుతుంది. ఎక్స్‌పోర్ట్‌లో టెక్స్ట్ స్థిరంగా కనిపిస్తుంది.</p></section>
+<section class="panel"><h2>7. Background Music</h2><label for="music">మీ ఫోన్ నుంచి ఆడియో ఎంచుకోండి (MP3/M4A/WAV)</label><input id="music" type="file" accept="audio/*"><label for="musicVolume">మ్యూజిక్ వాల్యూమ్</label><input id="musicVolume" type="range" min="0" max="100" value="35"><span id="musicVolumeLabel">35%</span><p class="muted">ఈ వెర్షన్‌లో మ్యూజిక్ ఎంచుకుంటే వీడియో ఒరిజినల్ ఆడియో స్థానంలో మ్యూజిక్ వస్తుంది. ఒరిజినల్ వాయిస్‌తో మిక్సింగ్ తదుపరి వెర్షన్‌లో జోడిద్దాం.</p></section>
+<section class="panel"><h2>8. నిజమైన MP4 Export</h2><p class="muted">ముందుగా 5–15 సెకన్ల చిన్న MP4 వీడియోతో పరీక్షించండి. మొదటిసారి FFmpeg ఇంజిన్ ఇంటర్నెట్ నుంచి లోడ్ అవుతుంది. వీడియో మీ ఫోన్ బ్రౌజర్‌లోనే ప్రాసెస్ అవుతుంది. ప్రాసెసింగ్ సమయంలో ఈ ట్యాబ్ మూసివేయవద్దు.</p><button id="export" disabled>🎬 Export Edited MP4</button><progress id="progress" value="0" max="100" hidden></progress><p id="exportStatus" class="muted" role="status" aria-live="polite"></p><div id="exportResult"></div><p class="muted">Exportలో Trim, Effect, తెలుగు టెక్స్ట్ మరియు ఎంచుకున్న Music వర్తిస్తాయి. చిన్న వీడియోలతో పరీక్షించండి.</p></section>
+<section class="panel"><h2>9. AI Prompt Planner</h2><label for="topic">మీ వీడియో విషయం</label><input id="topic" type="text" placeholder="ఉదా: AI Photo Editing Reel"><button id="prompt">✨ Prompt తయారు చేయండి</button><p id="result" class="muted" style="white-space:pre-wrap"></p><button id="copy" hidden>Copy Prompt</button><p class="muted">ఇది టెంప్లేట్ ఆధారిత Prompt Generator మాత్రమే. AI సర్వీస్ ఇంకా కనెక్ట్ చేయలేదు.</p></section>
+<p id="status" role="status"></p>
+</main><footer>Version 3.0 — Effects, Telugu text, music and MP4 export</footer>
+<script>
+const $=id=>document.getElementById(id),v=$('video');let url=null,trimEnd=null,selectedFile=null,ffmpegInstance=null,outputURL=null;
+$('file').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;if(!f.type.startsWith('video/')){alert('వీడియో ఫైల్ ఎంచుకోండి');return}if(url)URL.revokeObjectURL(url);if(outputURL){URL.revokeObjectURL(outputURL);outputURL=null}selectedFile=f;$('exportResult').replaceChildren();$('exportStatus').textContent='';$('progress').hidden=true;url=URL.createObjectURL(f);v.src=url;v.load();$('status').textContent='వీడియో ఎంపికైంది: '+f.name;['play','snapshot','preview','export'].forEach(id=>$(id).disabled=false)});
+v.addEventListener('loadedmetadata',()=>{if(Number.isFinite(v.duration)){$('duration').textContent='Duration: '+v.duration.toFixed(1)+' seconds';$('start').value=0;$('end').value=v.duration.toFixed(1)}});
+$('play').onclick=()=>v.paused?v.play().catch(()=>{}):v.pause();
+$('brand').oninput=e=>$('overlay').textContent=e.target.value;
+$('position').onchange=e=>$('overlay').style.bottom=e.target.value;
+$('preview').onclick=()=>{const a=Number($('start').value),b=Number($('end').value);if(!Number.isFinite(v.duration)||!Number.isFinite(a)||!Number.isFinite(b)||a<0||b<=a||b>v.duration){alert('Start, End సమయాలను సరిగా నమోదు చేయండి');return}trimEnd=b;v.currentTime=a;v.play().catch(()=>{})};
+v.addEventListener('timeupdate',()=>{if(trimEnd!==null&&v.currentTime>=trimEnd){v.pause();trimEnd=null}});
+$('snapshot').onclick=()=>{if(!v.videoWidth){alert('ముందుగా వీడియో ప్లే చేయండి');return}const c=document.createElement('canvas');c.width=v.videoWidth;c.height=v.videoHeight;const x=c.getContext('2d');try{x.drawImage(v,0,0,c.width,c.height);const txt=$('brand').value.trim();if(txt){const fs=Math.max(18,Math.round(c.width*.045));x.font=`bold ${fs}px sans-serif`;x.textAlign='center';x.lineWidth=Math.max(3,fs/6);x.strokeStyle='#000';x.fillStyle='#fff';const y=c.height*(1-parseFloat($('position').value)/100);x.strokeText(txt,c.width/2,y,c.width*.92);x.fillText(txt,c.width/2,y,c.width*.92)}c.toBlob(blob=>{if(!blob){alert('ఫ్రేమ్ సేవ్ చేయలేకపోయాం');return}const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='master-ai-frame.png';a.click();setTimeout(()=>URL.revokeObjectURL(u),3000)},'image/png')}catch(e){alert('ఈ వీడియో నుంచి ఫ్రేమ్ సేవ్ చేయడం సాధ్యం కాలేదు')}};
+// FFmpeg.wasm UMD loader; browser-only local processing.
+function loadScript(src){return new Promise((resolve,reject)=>{const el=document.createElement('script');el.src=src;el.onload=resolve;el.onerror=()=>reject(new Error('FFmpeg library download failed'));document.head.appendChild(el)})}
+async function blobModuleURL(src,mime='text/javascript') {const response=await fetch(src);if(!response.ok)throw new Error('FFmpeg download HTTP '+response.status);const data=await response.blob();return URL.createObjectURL(new Blob([data],{type:mime}))}
+async function getFFmpeg(){
+ if(ffmpegInstance)return ffmpegInstance;
+ const version='0.12.10',base=`https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@${version}/dist/umd`,core='https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.10/dist/umd';
+ if(!window.FFmpegWASM)await loadScript(base+'/ffmpeg.js');
+ if(!window.FFmpegWASM?.FFmpeg)throw new Error('FFmpeg API not available');
+ const engine=new window.FFmpegWASM.FFmpeg();
+ engine.on('progress',({progress})=>{if(Number.isFinite(progress))$('progress').value=Math.max(0,Math.min(99,Math.round(progress*100)))});
+ $('exportStatus').textContent='FFmpeg engine లోడ్ అవుతోంది…';
+ const urls=[];
+ try{
+   const workerLoadURL=await blobModuleURL(base+'/814.ffmpeg.js');urls.push(workerLoadURL);
+   const coreURL=await blobModuleURL(core+'/ffmpeg-core.js');urls.push(coreURL);
+   const wasmURL=await blobModuleURL(core+'/ffmpeg-core.wasm','application/wasm');urls.push(wasmURL);
+   await engine.load({workerLoadURL,coreURL,wasmURL});
+   ffmpegInstance=engine;return engine;
+ }finally{setTimeout(()=>urls.forEach(u=>URL.revokeObjectURL(u)),30000)}
+}
+$('export').onclick=async()=>{
+ const a=Number($('start').value),b=Number($('end').value);
+ if(!selectedFile||!Number.isFinite(v.duration)||!Number.isFinite(a)||!Number.isFinite(b)||a<0||b<=a||b>v.duration+.1){alert('వీడియో, Start, End సమయాలు సరిచూడండి');return}
+ if(selectedFile.size>100*1024*1024){alert('మొదట 100 MB కంటే చిన్న వీడియోతో ప్రయత్నించండి');return}
+ const music=$('music').files[0];if(music&&music.size>25*1024*1024){alert('25 MB కంటే చిన్న Music ఎంచుకోండి');return}
+ $('export').disabled=true;$('progress').hidden=false;$('progress').value=0;$('exportResult').replaceChildren();
+ let ff,paths=[];
+ try{
+  ff=await getFFmpeg();const ext=(selectedFile.name.split('.').pop()||'mp4').toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,6)||'mp4';
+  const input='input.'+ext,output='master-ai-edited.mp4';paths.push(input,output);
+  $('exportStatus').textContent='వీడియో చదువుతోంది…';await ff.writeFile(input,new Uint8Array(await selectedFile.arrayBuffer()));
+  const args=['-ss',String(a),'-t',String(b-a),'-i',input];
+  const caption=$('captionText').value.trim();let overlayIndex=-1;
+  if(caption){
+   const w=Math.max(2,Math.round((v.videoWidth||720)/2)*2),h=Math.max(2,Math.round((v.videoHeight||1280)/2)*2);
+   await ff.writeFile('caption.png',await makeTextPNG(w,h,caption));paths.push('caption.png');
+   overlayIndex=1;args.push('-loop','1','-i','caption.png');
+  }
+  let musicIndex=-1;
+  if(music){musicIndex=caption?2:1;const musicExt=(music.name.split('.').pop()||'mp3').replace(/[^a-z0-9]/gi,'').slice(0,5)||'mp3';const musicPath='music.'+musicExt;paths.push(musicPath);await ff.writeFile(musicPath,new Uint8Array(await music.arrayBuffer()));args.push('-stream_loop','-1','-i',musicPath)}
+  const effects={normal:'',bright:'eq=brightness=0.06:contrast=1.1:saturation=1.25',cinema:'eq=contrast=1.22:saturation=0.78',bw:'hue=s=0',warm:'eq=saturation=1.2:gamma_r=1.08:gamma_b=0.94'};
+  const eq=effects[$('effect').value]||'';
+  if(caption){filters.push('overlay=0:0:shortest=1:format=auto');args.push('-filter_complex',`[0:v]${eq?eq+',':''}format=yuv420p[base];[base][${overlayIndex}:v]overlay=0:0:shortest=1[vout]`,'-map','[vout]')}
+  else{if(eq)args.push('-vf',eq);args.push('-map','0:v:0')}
+  if(music){args.push('-map',`${musicIndex}:a:0`,'-af',`volume=${Number($('musicVolume').value)/100}`,'-c:a','aac','-b:a','128k')}
+  else args.push('-map','0:a?','-c:a','aac','-b:a','96k');
+  args.push('-t',String(b-a),'-c:v','libx264','-preset','ultrafast','-crf','28','-pix_fmt','yuv420p','-movflags','+faststart',output);
+  $('exportStatus').textContent='Effects, Text, Musicతో MP4 తయారవుతోంది…';
+  const code=await ff.exec(args);if(code!==0)throw new Error('FFmpeg conversion failed (code '+code+')');
+  const data=await ff.readFile(output);if(!data.length)throw new Error('Output is empty');
+  if(outputURL)URL.revokeObjectURL(outputURL);outputURL=URL.createObjectURL(new Blob([data],{type:'video/mp4'}));
+  const link=document.createElement('a');link.href=outputURL;link.download='master-ai-edited.mp4';link.textContent='⬇ Download Edited MP4';$('exportResult').appendChild(link);
+  $('progress').value=100;$('exportStatus').textContent='మీ MP4 సిద్ధమైంది! Download నొక్కండి.';
+ }catch(err){console.error(err);$('exportStatus').textContent='Export విఫలమైంది: '+(err?.message||String(err))+' — చిన్న MP4తో ప్రయత్నించండి.'}
+ finally{if(ff)for(const path of paths){try{await ff.deleteFile(path)}catch(_){}}$('export').disabled=false}
+};
+$('musicVolume').oninput=()=>{$('musicVolumeLabel').textContent=$('musicVolume').value+'%'};
+$('effect').onchange=()=>{const filters={normal:'none',bright:'brightness(1.12) contrast(1.1) saturate(1.25)',cinema:'contrast(1.22) saturate(.78)',bw:'grayscale(1)',warm:'sepia(.25) saturate(1.18)'};v.style.filter=filters[$('effect').value]};
+function makeTextPNG(width,height,text){
+ const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;
+ const ctx=canvas.getContext('2d');const fs=Math.max(20,Math.round(width*.052));
+ ctx.font=`bold ${fs}px 'Noto Sans Telugu', 'Nirmala UI', sans-serif`;
+ ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';
+ const y=$('captionPos').value==='top'?height*.14:$('captionPos').value==='center'?height*.5:height*.86;
+ const maxWidth=width*.88;
+ const words=text.split(/\s+/);const lines=[];let line='';
+ for(const word of words){const test=line?line+' '+word:word;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=word}else line=test}if(line)lines.push(line);
+ const lineH=fs*1.45;const firstY=y-(lines.length-1)*lineH/2;
+ ctx.lineWidth=Math.max(3,fs*.15);ctx.strokeStyle='rgba(0,0,0,.92)';ctx.fillStyle=$('captionColor').value;
+ lines.forEach((t,i)=>{ctx.strokeText(t,width/2,firstY+i*lineH,maxWidth);ctx.fillText(t,width/2,firstY+i*lineH,maxWidth)});
+ return new Promise((resolve,reject)=>canvas.toBlob(async b=>b?resolve(new Uint8Array(await b.arrayBuffer())):reject(new Error('Text overlay image failed')),'image/png'));
+}
+$('prompt').onclick=()=>{const t=$('topic').value.trim();if(!t){alert('వీడియో విషయం నమోదు చేయండి');return}const s=`Create a 30-second vertical 9:16 social media video about: ${t}. Write a strong Telugu hook, 3 scene descriptions, natural Telugu voice-over, on-screen Telugu captions, and a closing call to action. Brand: MASTER AI TELUGU EDUCATION. Keep it clear and engaging.`;$('result').textContent=s;$('copy').hidden=false};
+$('copy').onclick=()=>{const t=$('result').textContent;if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(()=>$('status').textContent='Prompt కాపీ అయింది').catch(()=>alert('టెక్స్ట్ సెలెక్ట్ చేసి Copy చేయండి'))}else{alert('Prompt టెక్స్ట్ సెలెక్ట్ చేసి Copy చేయండి')}};
+</script>
+</body></html>
